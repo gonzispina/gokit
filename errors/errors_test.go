@@ -3,7 +3,7 @@ package errors_test
 import (
 	"testing"
 
-	"github.com/sigiapp/sigi-api/internal/errors"
+	"github.com/gonzispina/gokit/errors"
 	"github.com/stretchr/testify/require"
 )
 
@@ -31,7 +31,7 @@ func TestErrors(main *testing.T) {
 
 	main.Run("NewWithErr encapsulates the err", func(t *testing.T) {
 		encapsulatedErr := errors.New("error encapsulated", "an_error_code")
-		err := errors.NewWithErr("an error", encapsulatedErr)
+		err := errors.NewWithErr("an error", "code", encapsulatedErr)
 		require.True(t, errors.Is(err, encapsulatedErr))
 	})
 
@@ -42,7 +42,7 @@ func TestErrors(main *testing.T) {
 
 	main.Run("IsOnly returns false when there is another error wrapper", func(t *testing.T) {
 		encapsulatedErr := errors.New("error encapsulated", "an_error_code")
-		err := errors.NewWithErr("an error", encapsulatedErr)
+		err := errors.NewWithErr("an error", "code", encapsulatedErr)
 		require.False(t, errors.IsOnly(err, err))
 		require.False(t, errors.IsOnly(err, encapsulatedErr))
 	})
