@@ -31,4 +31,14 @@ Is a wrapper around the zap logger created by Uber. It has some extra features:
 ### UUID
 
 Is a wrapper around google's uuid creator. It exports a single method "New" which
-returns a string uuid. 
+returns a string uuid.
+
+### Errors
+
+Is a wrapper around the standard's lib error with extra features. It allows
+to add codes to the errors.
+
+- Exports a "New" method similar to the one exported in the standard lib but with an extra parameter for the error's code.
+- Exports a "OneOf" function to check whether an error is one in a list of errors.
+- Exports a "IsOnly" function to check if is of one kind and has nothing else wrapped inside.
+- Exports a "NewWithErr" function to create an error and automatically wrap another error.
